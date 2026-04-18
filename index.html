@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="bn" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>E Learning & Earning Ltd Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg-mesh"></div>
+<div class="bg-grid"></div>
+
+<div id="app">
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="brand">E Learning <em>&amp;</em> Earning <em>Ltd</em></div>
+    <div class="tb-sep"></div>
+
+    <div class="lab-tabs" id="labTabs">
+      <button class="lab-tab active" data-lab="A">Lab A</button>
+      <button class="lab-tab"        data-lab="B">Lab B</button>
+      <button class="lab-tab"        data-lab="C">Lab C</button>
+    </div>
+
+    <div class="day-chip">
+      <i class="fa-solid fa-calendar-day"></i>
+      <span id="dayTxt">লোড হচ্ছে...</span>
+    </div>
+
+    <button class="theme-btn" id="themeBtn">
+      <i class="fa-solid fa-moon" id="themeIco"></i>
+    </button>
+  </header>
+
+  <!-- MAIN 3-COL -->
+  <div class="main">
+
+    <!-- ── LEFT PANEL ── -->
+    <div class="panel pl">
+
+      <!-- Status -->
+      <div class="card fade-in" id="statusCard">
+        <div class="clabel"><i class="fa-solid fa-circle-dot"></i>Current Status</div>
+        <div class="status-row">
+          <div class="sdot sd-class" id="sDot"></div>
+          <div class="st-main" id="stMain">লোড হচ্ছে...</div>
+        </div>
+        <div class="st-sub" id="stSub">—</div>
+      </div>
+
+      <!-- Next event -->
+      <div class="card fade-in" id="nextCard">
+        <div class="clabel"><i class="fa-solid fa-arrow-right-long"></i>পরবর্তী ইভেন্ট</div>
+        <div class="nrow">
+          <div class="nleft">
+            <div class="nico ni-class" id="nIco"><i id="nIcoI" class="fa-solid fa-book-open"></i></div>
+            <div>
+              <div class="nn" id="nName">—</div>
+              <div class="nt" id="nTime">—</div>
+            </div>
+          </div>
+          <div class="ncd" id="nCd">—</div>
+        </div>
+      </div>
+
+      <!-- Message -->
+      <div class="card msg-card fade-in" id="msgCard">
+        <div class="mi"><i id="msgI" class="fa-solid fa-quote-left"></i></div>
+        <div class="mb" id="msgB">লোড হচ্ছে...</div>
+      </div>
+
+    </div><!-- /pl -->
+
+    <!-- ── CENTER ── -->
+    <div class="center" id="centerPanel">
+      <div class="ring ring-1"></div>
+      <div class="ring ring-2"></div>
+      <div class="ring ring-3"></div>
+
+      <div class="clk-label fade-in" id="clkLabel">
+        <i class="fa-regular fa-clock"></i>
+        <span id="clkLblTxt">সময় বাকি</span>
+      </div>
+
+      <div class="clk fade-in" id="clkDisplay">
+        <span class="cseg" id="ckH">00</span>
+        <span class="csep">:</span>
+        <span class="cseg" id="ckM">00</span>
+        <span class="csep">:</span>
+        <span class="cseg" id="ckS">00</span>
+      </div>
+
+      <div class="clk-hint fade-in">
+        <i class="fa-solid fa-hand-pointer"></i>
+        <span>click to toggle &nbsp;·&nbsp; remaining / spent</span>
+      </div>
+
+      <div class="clk-meta fade-in">
+        <div class="cm-item">
+          <div class="cm-val" id="cmPct">0%</div>
+          <div class="cm-lbl">অগ্রগতি</div>
+        </div>
+        <div class="cm-div"></div>
+        <div class="cm-item">
+          <div class="cm-val" id="cmSlot">—</div>
+          <div class="cm-lbl">সেশন বাকি</div>
+        </div>
+        <div class="cm-div"></div>
+        <div class="cm-item">
+          <div class="cm-val" id="cmDay">—</div>
+          <div class="cm-lbl">আজ</div>
+        </div>
+      </div>
+    </div><!-- /center -->
+
+    <!-- ── RIGHT PANEL ── -->
+    <div class="panel pr">
+
+      <!-- Progress -->
+      <div class="card fade-in">
+        <div class="clabel"><i class="fa-solid fa-chart-line"></i>দিনের অগ্রগতি</div>
+        <div class="prog-head">
+          <div>
+            <div class="prog-pct" id="pPct">0%</div>
+            <div class="prog-lbl">COMPLETED</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-family:'Oswald',sans-serif;font-size:14px;color:var(--text-2);letter-spacing:.04em;" id="pRem">—</div>
+            <div class="prog-lbl" style="text-align:right">REMAINING</div>
+          </div>
+        </div>
+        <div class="prog-track">
+          <div class="prog-fill" id="pFill" style="width:0%"></div>
+        </div>
+        <div class="prog-times">
+          <span>09:00</span><span>17:00</span>
+        </div>
+      </div>
+
+      <!-- Trainer -->
+      <div class="card fade-in" id="trCard">
+        <div class="tr-meta">
+          <div class="clabel" style="margin-bottom:0"><i class="fa-solid fa-chalkboard-user"></i>আজকের ট্রেইনার</div>
+          <span class="shift-tag st-morning" id="shiftTag">Morning</span>
+        </div>
+        <div class="tr-grid">
+          <div class="ti current">
+            <div class="tav ta-c"><i class="fa-solid fa-user-tie"></i></div>
+            <div class="tr-role">এখন</div>
+            <div class="tr-name" id="trCur">—</div>
+          </div>
+          <div class="ti">
+            <div class="tav ta-n"><i class="fa-solid fa-user"></i></div>
+            <div class="tr-role">পরে</div>
+            <div class="tr-name" id="trNxt">—</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Schedule -->
+      <div class="card fade-in">
+        <div class="clabel"><i class="fa-solid fa-list-check"></i>আজকের রুটিন</div>
+        <div class="sch-list" id="schList"></div>
+      </div>
+
+    </div><!-- /pr -->
+
+  </div><!-- /main -->
+</div><!-- /app -->
+
+<script src="app.js">
+
+</script>
+</body>
+</html>
